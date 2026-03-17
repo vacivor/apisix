@@ -34,7 +34,7 @@ helm install apisix apisix/apisix \
   --set ingress-controller.config.apisix.serviceNamespace=ingress-apisix \  # 指定 APISIX Gateway 所在 namespace
   --set etcd.replicaCount=1 \                      # etcd 副本数设置为 1（适用于开发环境）
   --set etcd.persistence.enabled=false \           # 关闭 etcd 持久化存储
-  --set gateway.type=NodePort \                    # 通过 NodePort 暴露 APISIX Gateway
+  --set service.type=NodePort \                    # 通过 NodePort 暴露 APISIX Gateway
   --set ingress-controller.config.kubernetes.enableGatewayAPI=false \  # 禁用 Gateway API，仅使用 Kubernetes Ingress
   --set ingress-controller.gatewayProxy.createDefault=true              # 创建默认 gateway proxy service
 ```
