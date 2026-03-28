@@ -1,0 +1,23 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: vacuna-route
+  namespace: vacuna
+spec:
+  ingressClassName: apisix
+  http:
+    - name: vacuna-http
+      match:
+        hosts:
+          - vacuna-console.281018.xyz
+        paths:
+          - /*
+      backends:
+        - serviceName: vacuna-console
+          servicePort: 80
+      plugins:
+        - name: request-id
+          enable: true
+          config:
+            header_name: X-Request-Id
+            include_in_response: true
