@@ -1,0 +1,17 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: chert-route
+  namespace: chert
+spec:
+  ingressClassName: apisix
+  http:
+    - name: chert
+      match:
+        hosts:
+          - chert.281018.xyz
+        paths:
+          - /*
+      backends:
+        - serviceName: chert
+          servicePort: 80
